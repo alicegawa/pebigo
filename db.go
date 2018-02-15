@@ -363,4 +363,4 @@ func (db *DB) Close() {
 	db.closed = true
 	C.leveldb_close(db.Pdb)
 }
-	
+
