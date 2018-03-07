@@ -45,7 +45,7 @@ type ReadOptions struct {
 
 func NewOptions() *Options {
 	opt := C.leveldb_options_create()
-	return &Option{opt}
+	return &Options{opt}
 }
 
 func NewReadOptions() *ReadOptions {
@@ -62,16 +62,16 @@ func (o *Options) Close() {
 	C.leveldb_options_destroy(o.Opt)
 }
 
-func (o *Options) SetComparator(cmp *C.leveldb_comparaotr_t) {
+func (o *Options) SetComparator(cmp *C.leveldb_comparator_t) {
 	C.leveldb_options_set_comparator(o.Opt, cmp)
 }
 
 func (o *Options) SetFilterPolicy(fp *FilterPolicy) {
-	var policy *C.leveldb_filter_policy_t
+	var policy *C.leveldb_filterpolicy_t
 	if fp != nil {
 		policy = fp.Policy
 	}
-	C.leveldb_options_set_fileter_policy(o.Opt, fp)
+	C.leveldb_options_set_filter_policy(o.Opt, policy)
 }
 
 func (o *Options) SetCreateIfMissing(b bool) {
@@ -79,7 +79,7 @@ func (o *Options) SetCreateIfMissing(b bool) {
 }
 
 func (o *Options) SetErrorIfExists(b bool) {
-	C.leveldb_options_set_error_if_exists(o.Opt, booToUchar(b))
+	C.leveldb_options_set_error_if_exists(o.Opt, boolToUchar(b))
 }
 
 func (o *Options) SetParanoidChecks(b bool) {

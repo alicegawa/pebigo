@@ -8,7 +8,7 @@ type FilterPolicy struct {
 	Policy *C.leveldb_filterpolicy_t
 }
 
-func NewBloomFileter(bitsPerKey int) *FileterPolicy {
+func NewBloomFilter(bitsPerKey int) *FilterPolicy {
 	return &FilterPolicy{C.leveldb_filterpolicy_create_bloom(C.int(bitsPerKey))}
 }
 

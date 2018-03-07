@@ -5,7 +5,7 @@ package pebigo
 import "C"
 
 type Env struct {
-	Env *leveldb_env_t
+	Env *C.leveldb_env_t
 }
 
 func NewDefaultEnv() *Env {

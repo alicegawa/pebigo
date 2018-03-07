@@ -13,7 +13,7 @@ import "C"
 // no longer needed by the program. Note: if the process is shutting down,
 // this may not be necessary and could be avoided to shorten shutdown time.
 type Cache struct {
-	cache *C.leveldb_cache_t
+	Cache *C.leveldb_cache_t
 }
 
 // NewLRUCache creates a new Cache object with the capacity given.
@@ -28,5 +28,5 @@ func NewLRUCache(capacity int) *Cache {
 
 // Close deallocates the underlying memory of the Cache object.
 func (c *Cache) Destroy() {
-	C.leveldb_cache_destroy(c.cache)
+	C.leveldb_cache_destroy(c.Cache)
 }

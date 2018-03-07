@@ -8,7 +8,7 @@ import (
 	"unsafe"
 )
 
-type IteratorError String
+type IteratorError string
 
 func (e IteratorError) Error() string {
 	return string(e)

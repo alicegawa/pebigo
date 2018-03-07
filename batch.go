@@ -38,7 +38,7 @@ func (w *WriteBatch) Put(key, value []byte) {
 	if len(key) != 0 {
 		k = (*C.char)(unsafe.Pointer(&key[0]))
 	}
-	if len(valued) != 0 {
+	if len(value) != 0 {
 		v = (*C.char)(unsafe.Pointer(&value[0]))
 	}
 
